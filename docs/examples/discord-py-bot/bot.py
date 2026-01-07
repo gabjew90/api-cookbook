@@ -81,6 +81,9 @@ async def on_message(message):
     
     # Check if bot is mentioned
     if bot.user in message.mentions and perplexity_client:
+         # Ignore replies to bot's own messages
+        if message.reference:
+            return
         # Remove mention from content
         content = message.content.replace(f'<@{bot.user.id}>', '').replace(f'<@!{bot.user.id}>', '').strip()
         
