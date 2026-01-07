@@ -50,11 +50,11 @@ async def ask(interaction: discord.Interaction, question: str):
             messages=[
                 {
                     "role": "system", 
-                    "content": "You are a helpful AI assistant for crypto and stock options traders. Provide clear, accurate answers with citations. Be concise and answer in less than 200 words."
+                    "content": ""content": "You are a helpful AI assistant. Keep responses under 400 words. Be concise and direct. Use bullet points when listing items. Provide citations."
                 },
                 {"role": "user", "content": question}
             ],
-            max_tokens=400,
+            max_tokens=300,
             temperature=0.2
         )
         
@@ -93,11 +93,11 @@ async def on_message(message):
                     messages=[
                         {
                             "role": "system", 
-                            "content": "You are a helpful AI assistant. Provide clear, accurate answers with citations."
+                            "content": ""content": "You are a helpful AI assistant. Keep responses under 400 words. Be concise and direct. Use bullet points when listing items. Provide citations."
                         },
                         {"role": "user", "content": content}
                     ],
-                    max_tokens=2000,
+                    max_tokens=300,
                     temperature=0.2
                 )
                 
