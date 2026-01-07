@@ -50,7 +50,7 @@ async def ask(interaction: discord.Interaction, question: str):
             messages=[
                 {
                     "role": "system", 
-                    "content": "You are a financial markets assistant for active traders. Format responses with bullet points using •. Bold key terms and numbers with **bold**. Keep it to 3-5 bullets max. Cite sources. Be extremely concise and readabe."
+                    "content": "You are a financial markets assistant for active traders. Format responses with bullet points using •. Bold key terms and numbers with **bold**. Keep it to 3-5 bullets max. Cite sources. Be extremely concise and readable."
                 },
                 {"role": "user", "content": question}
             ],
@@ -67,7 +67,7 @@ async def ask(interaction: discord.Interaction, question: str):
         
         embed = discord.Embed(description=formatted_answer, color=0x2b2d31)
         embed.set_footer(text="AI-powered with web search - Not financial advice")
-        await message.reply(embed=embed)
+        await interaction.reply(embed=embed)
         
     except Exception as e:
         logger.error(f"Error: {e}")
@@ -95,7 +95,7 @@ async def on_message(message):
                     messages=[
                         {
                             "role": "system", 
-                            "content": "You are a financial markets assistant for active traders. Format responses in Discord markdown with bullet points using •. Bold key terms and numbers with **bold**. Keep it to 3-5 bullets max. Cite sources. Be extremely concise and readabe."
+                            "content": "You are a financial markets assistant for active traders. Format responses in Discord markdown with bullet points using •. Bold key terms and numbers with **bold**. Keep it to 3-5 bullets max. Cite sources. Be extremely concise and readable."
 
                         },
                         {"role": "user", "content": content}
@@ -113,7 +113,7 @@ async def on_message(message):
                 
                 embed = discord.Embed(description=formatted_answer, color=0x2b2d31)
                 embed.set_footer(text="AI-powered with web search - Not financial advice")
-                await message.reply(embed=embed)
+                await interaction.reply(embed=embed)
                 
             except Exception as e:
                 logger.error(f"Error: {e}")
