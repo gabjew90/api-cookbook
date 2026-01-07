@@ -66,7 +66,7 @@ async def ask(interaction: discord.Interaction, question: str):
             formatted_answer = formatted_answer[:1997] + "..."
         
         embed = discord.Embed(description=formatted_answer, color=0x2b2d31)
-        embed.set_footer(text="AI-powered with web search - Not financial advice")
+        embed.set_footer(text="Hi, I'm AI-powered - NFA")
         await interaction.followup.send(embed=embed)
         
     except Exception as e:
@@ -112,7 +112,7 @@ async def on_message(message):
                     formatted_answer = formatted_answer[:1997] + "..."
                 
                 embed = discord.Embed(description=formatted_answer, color=0x2b2d31)
-                embed.set_footer(text="AI-powered with web search - Not financial advice")
+                embed.set_footer(text="Hi, I'm AI-powered - NFA")
                 await message.reply(embed=embed)
                 
             except Exception as e:
