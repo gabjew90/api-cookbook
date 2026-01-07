@@ -50,11 +50,11 @@ async def ask(interaction: discord.Interaction, question: str):
             messages=[
                 {
                     "role": "system", 
-                    "content": "You are a helpful AI assistant. Keep responses under 200 words. Be concise and direct. Use bullet points when listing items. Provide citations."
+                    "content": "You are a financial markets assistant for active traders. Focus on: earnings, macro data, Fed policy, crypto catalysts, and market-moving news. USA markets focus. Be extremely concise - 2-3 short paragraphs max. Lead with the actionable info. Skip background fluff. Cite sources."
                 },
                 {"role": "user", "content": question}
             ],
-            max_tokens=300,
+            max_tokens=150,
             temperature=0.2
         )
         
@@ -93,11 +93,12 @@ async def on_message(message):
                     messages=[
                         {
                             "role": "system", 
-                            "content": "You are a helpful AI assistant. Keep responses under 200 words. Be concise and direct. Use bullet points when listing items. Provide citations."
+                            "content": "You are a financial markets assistant for active traders. Focus on: earnings, macro data, Fed policy, crypto catalysts, and market-moving news. USA markets focus. Be extremely concise - 2-3 short paragraphs max. Lead with the actionable info. Skip background fluff. Cite sources."
+
                         },
                         {"role": "user", "content": content}
                     ],
-                    max_tokens=300,
+                    max_tokens=150,
                     temperature=0.2
                 )
                 
