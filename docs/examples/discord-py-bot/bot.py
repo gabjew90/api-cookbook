@@ -46,11 +46,11 @@ async def ask(interaction: discord.Interaction, question: str):
     
     try:
         response = perplexity_client.chat.completions.create(
-            model="sonar-pro",
+            model="sonar-reasoning-pro",
             messages=[
                 {
                     "role": "system", 
-                    "content": ""content": "You are a helpful AI assistant. Keep responses under 400 words. Be concise and direct. Use bullet points when listing items. Provide citations."
+                    "content": ""content": "You are a helpful AI assistant. Keep responses under 200 words. Be concise and direct. Use bullet points when listing items. Provide citations."
                 },
                 {"role": "user", "content": question}
             ],
@@ -89,11 +89,11 @@ async def on_message(message):
         async with message.channel.typing():
             try:
                 response = perplexity_client.chat.completions.create(
-                    model="sonar-pro",
+                    model="sonar-reasoning-pro",
                     messages=[
                         {
                             "role": "system", 
-                            "content": ""content": "You are a helpful AI assistant. Keep responses under 400 words. Be concise and direct. Use bullet points when listing items. Provide citations."
+                            "content": ""content": "You are a helpful AI assistant. Keep responses under 200 words. Be concise and direct. Use bullet points when listing items. Provide citations."
                         },
                         {"role": "user", "content": content}
                     ],
