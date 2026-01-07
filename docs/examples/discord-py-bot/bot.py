@@ -66,7 +66,8 @@ async def ask(interaction: discord.Interaction, question: str):
             formatted_answer = formatted_answer[:1997] + "..."
         
         embed = discord.Embed(description=formatted_answer, color=0x2b2d31)
-        await interaction.followup.send(embed=embed)
+        embed.set_footer(text="AI-powered with web search - Not financial advice")
+        await message.reply(embed=embed)
         
     except Exception as e:
         logger.error(f"Error: {e}")
@@ -111,7 +112,8 @@ async def on_message(message):
                     formatted_answer = formatted_answer[:1997] + "..."
                 
                 embed = discord.Embed(description=formatted_answer, color=0x2b2d31)
-                await interaction.followup.send(embed=embed)
+                embed.set_footer(text="AI-powered with web search - Not financial advice")
+                await message.reply(embed=embed)
                 
             except Exception as e:
                 logger.error(f"Error: {e}")
