@@ -59,7 +59,6 @@ async def ask(interaction: discord.Interaction, question: str):
         )
         
         answer = response.choices[0].message.content
-        answer = re.sub(r'<think>.*?</think>', '', answer, flags=re.DOTALL).strip()
         formatted_answer = format_citations(answer, response)
         
         # Truncate if too long
@@ -104,7 +103,6 @@ async def on_message(message):
                 )
                 
                 answer = response.choices[0].message.content
-                answer = re.sub(r'<think>.*?</think>', '', answer, flags=re.DOTALL).strip()
                 formatted_answer = format_citations(answer, response)
                 
                 # Truncate if too long
