@@ -50,7 +50,7 @@ async def ask(interaction: discord.Interaction, question: str):
             messages=[
                 {
                     "role": "system", 
-                    "content": "You are a financial markets assistant for active traders. Focus on: earnings, macro data, Fed policy, crypto catalysts, and market-moving news. USA markets focus. Be extremely concise - 2-3 short paragraphs max. Lead with the actionable info. Skip background fluff. Cite sources."
+                    "content": "You are a financial markets assistant for active traders. Format responses with bullet points using •. Bold key terms and numbers with **bold**. Keep it to 3-5 bullets max. Cite sources. Be extremely concise and readabe."
                 },
                 {"role": "user", "content": question}
             ],
@@ -65,7 +65,8 @@ async def ask(interaction: discord.Interaction, question: str):
         if len(formatted_answer) > 2000:
             formatted_answer = formatted_answer[:1997] + "..."
         
-        await interaction.followup.send(formatted_answer)
+        embed = discord.Embed(description=formatted_answer, color=0x2b2d31)
+        await interaction.followup.send(embed=embed)
         
     except Exception as e:
         logger.error(f"Error: {e}")
@@ -93,7 +94,7 @@ async def on_message(message):
                     messages=[
                         {
                             "role": "system", 
-                            "content": "You are a financial markets assistant for active traders. Focus on: earnings, macro data, Fed policy, crypto catalysts, and market-moving news. USA markets focus. Be extremely concise - 2-3 short paragraphs max. Lead with the actionable info. Skip background fluff. Cite sources."
+                            "content": "You are a financial markets assistant for active traders. Format responses in Discord markdown with bullet points using •. Bold key terms and numbers with **bold**. Keep it to 3-5 bullets max. Cite sources. Be extremely concise and readabe."
 
                         },
                         {"role": "user", "content": content}
@@ -109,7 +110,8 @@ async def on_message(message):
                 if len(formatted_answer) > 2000:
                     formatted_answer = formatted_answer[:1997] + "..."
                 
-                await message.reply(formatted_answer)
+                embed = discord.Embed(description=formatted_answer, color=0x2b2d31)
+                await interaction.followup.send(embed=embed)
                 
             except Exception as e:
                 logger.error(f"Error: {e}")
