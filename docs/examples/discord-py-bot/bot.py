@@ -54,11 +54,12 @@ async def ask(interaction: discord.Interaction, question: str):
                 },
                 {"role": "user", "content": question}
             ],
-            max_tokens=150,
+            max_tokens=200,
             temperature=0.2
         )
         
         answer = response.choices[0].message.content
+        answer = re.sub(r'<think>.*?</think>', '', answer, flags=re.DOTALL).strip()
         formatted_answer = format_citations(answer, response)
         
         # Truncate if too long
@@ -98,11 +99,12 @@ async def on_message(message):
                         },
                         {"role": "user", "content": content}
                     ],
-                    max_tokens=150,
+                    max_tokens=200,
                     temperature=0.2
                 )
                 
                 answer = response.choices[0].message.content
+                answer = re.sub(r'<think>.*?</think>', '', answer, flags=re.DOTALL).strip()
                 formatted_answer = format_citations(answer, response)
                 
                 # Truncate if too long
