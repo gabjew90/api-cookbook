@@ -50,7 +50,7 @@ async def ask(interaction: discord.Interaction, question: str):
             messages=[
                 {
                     "role": "system", 
-                    "content": "You are a financial markets assistant for active traders. Format responses with bullet points using •. Bold key terms and numbers with **bold**. Keep it to 3-5 bullets max. Cite sources. Be extremely concise and readable."
+                    "content": "You are a financial markets assistant for active traders. Format responses with arrow points using → followed by a blank line between each point. Bold key terms and numbers with **bold**. Keep it to 3-5 points max. Cite sources. Be extremely concise and readable."
                 },
                 {"role": "user", "content": question}
             ],
@@ -65,7 +65,7 @@ async def ask(interaction: discord.Interaction, question: str):
         if len(formatted_answer) > 2000:
             formatted_answer = formatted_answer[:1997] + "..."
         
-        embed = discord.Embed(description=formatted_answer, color=0x2b2d31)
+        embed = discord.Embed(description=formatted_answer, color=0x228B22)
         embed.set_footer(text="Hi, I'm AI-powered - NFA")
         await interaction.followup.send(embed=embed)
         
@@ -98,7 +98,7 @@ async def on_message(message):
                     messages=[
                         {
                             "role": "system", 
-                            "content": "You are a financial markets assistant for active traders. Format responses in Discord markdown with bullet points using •. Bold key terms and numbers with **bold**. Keep it to 3-5 bullets max. Cite sources. Be extremely concise and readable."
+                            "content": "You are a financial markets assistant for active traders. Format responses with arrow points using → followed by a blank line between each point. Bold key terms and numbers with **bold**. Keep it to 3-5 points max. Cite sources. Be extremely concise and readable."
 
                         },
                         {"role": "user", "content": content}
@@ -114,7 +114,7 @@ async def on_message(message):
                 if len(formatted_answer) > 2000:
                     formatted_answer = formatted_answer[:1997] + "..."
                 
-                embed = discord.Embed(description=formatted_answer, color=0x2b2d31)
+                embed = discord.Embed(description=formatted_answer, color=0x228B22)
                 embed.set_footer(text="Hi, I'm AI-powered - NFA")
                 await message.reply(embed=embed)
                 
