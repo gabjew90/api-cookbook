@@ -46,7 +46,7 @@ async def ask(interaction: discord.Interaction, question: str):
     
     try:
         response = perplexity_client.chat.completions.create(
-            model="sonar-reasoning-pro",
+            model="sonar-pro",
             messages=[
                 {
                     "role": "system", 
@@ -90,7 +90,7 @@ async def on_message(message):
         async with message.channel.typing():
             try:
                 response = perplexity_client.chat.completions.create(
-                    model="sonar-reasoning-pro",
+                    model="sonar-pro",
                     messages=[
                         {
                             "role": "system", 
